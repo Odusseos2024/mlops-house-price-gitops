@@ -84,8 +84,9 @@ def main(args):
         mlflow.log_params(model_cfg['parameters'])
         mlflow.log_metrics({'mae': mae, 'r2': r2})
 
-        # Log and register model
+        print("------BEFORE------")
         mlflow.sklearn.log_model(model, "tuned_model")
+        print("------AFTER------")
         model_name = model_cfg['name']
         model_uri = f"runs:/{mlflow.active_run().info.run_id}/tuned_model"
 
